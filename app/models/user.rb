@@ -4,10 +4,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 14 }
   validates :full_name, presence: true
-  validates_format_of :photo, with: /\.(png|jpg|jpeg)$/i, message: 'Please select only images',
-                              multiline: true
-  validates_format_of :cover_image, with: /\.(png|jpg|jpeg)$/i, message: 'Please select only images',
-                                    multiline: true
+  validates :photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..2.megabytes }
+  validates :cover_image, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..2.megabytes }
+  validates :photo, presence: false
+  validates :cover_image, presence: false
 
   has_many :opinions, foreign_key: 'author_id'
   has_many :followings, class_name: 'Following', foreign_key: 'follower_id'

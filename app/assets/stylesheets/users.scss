@@ -1,0 +1,158 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./mixins/display";
+@import "variables";
+@import "colors";
+
+.signup-page-main-container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $light-blue-color;
+
+  @include flex-center(column);
+
+  .signup-wrapper {
+    width: 50rem;
+    height: 30rem;
+    background-color: $white;
+    border-radius: 0.4rem;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+
+    @include flex-center(row);
+
+    .signup-left-side {
+      width: 60%;
+      height: 100%;
+      background-image: url("blog8.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+
+      &.register {
+        background-image: url("blog1.jpg");
+      }
+
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .signup-right-side {
+      width: 40%;
+      height: 100%;
+      padding: 2rem;
+      padding-top: 4rem;
+
+      .header {
+        @include flex-center(column);
+
+        padding: 1rem;
+
+        .logo-wrapper {
+          width: 13rem;
+          height: 6rem;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .title {
+          h3 {
+            font-weight: 200;
+          }
+        }
+      }
+
+      form {
+        width: 100%;
+
+        @include flex-center(column);
+
+        .form-control {
+          width: 100%;
+          margin: 0.5rem 0.5rem;
+          border: $border;
+          padding: 0.5rem;
+          border-radius: 2rem;
+          border-color: rgb(201, 204, 206);
+
+          @include flex-center(row);
+
+          i {
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+          }
+
+          input[type="text"] {
+            flex: 1;
+            border: none;
+            outline: none;
+            height: 100%;
+          }
+        }
+
+        .submit-btn {
+          margin-top: 0.5rem;
+
+          input[type="submit"] {
+            background: $primary-color;
+            color: $white;
+            border: none;
+            padding: 0.6rem 3rem;
+            font-size: 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+
+            &:hover {
+              background-color: lighten($primary-color, 5%);
+            }
+          }
+        }
+
+        .or-divider {
+          @include flex-center(row);
+
+          .line {
+            width: 6rem;
+            height: 1px;
+            background-color: rgb(201, 204, 206);
+          }
+
+          .or {
+            margin: 1rem;
+            font-weight: 200;
+            font-size: 1rem;
+          }
+        }
+
+        .already-registered {
+          @include flex-center(row);
+
+          span {
+            font-size: 0.9rem;
+          }
+
+          a {
+            margin-left: 0.5rem;
+            color: $primary-color;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

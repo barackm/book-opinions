@@ -1,0 +1,34 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 415 571" width="415" height="571">
+	<title>&lt;Group&gt;</title>
+	<defs>
+		<linearGradient id="grd1" gradientUnits="userSpaceOnUse"  x1="0.982" y1="-5.37" x2="413.777" y2="-5.37">
+			<stop offset="0" stop-color="#48cfee"  />
+			<stop offset="1" stop-color="#63cbaa"  />
+		</linearGradient>
+		<linearGradient id="grd2" gradientUnits="userSpaceOnUse"  x1="0.982" y1="23.173" x2="354.796" y2="23.173">
+			<stop offset="0" stop-color="#3586c9"  />
+			<stop offset="1" stop-color="#48cfee"  />
+		</linearGradient>
+		<linearGradient id="grd3" gradientUnits="userSpaceOnUse"  x1="0.982" y1="23.173" x2="295.774" y2="23.173">
+			<stop offset="0" stop-color="#1957ae"  />
+			<stop offset="1" stop-color="#3586c9"  />
+		</linearGradient>
+		<linearGradient id="grd4" gradientUnits="userSpaceOnUse"  x1="-5" y1="563.776" x2="-5" y2="29.173">
+			<stop offset="0" stop-color="#1957ae"  />
+			<stop offset="1" stop-color="#5b4fa9"  />
+		</linearGradient>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: url(#grd1) } 
+		.shp1 { fill: url(#grd2) } 
+		.shp2 { fill: url(#grd3) } 
+		.shp3 { fill: url(#grd4) } 
+	</style>
+	<g id="&lt;Group&gt;">
+		<path id="&lt;Path&gt;" class="shp0" d="M0.98 29.17L14.58 385.96C15.06 398.52 25.88 408.18 38.42 407.23L393.71 380.34C405.6 379.44 414.65 369.29 414.2 357.38L401.41 21.94C400.93 9.37 390.11 -0.28 377.57 0.67L0.98 29.17Z" />
+		<path id="&lt;Path&gt;" class="shp1" d="M0.98 29.17L15.46 408.97L354.8 439.9L340.32 60.1L0.98 29.17Z" />
+		<path id="&lt;Path&gt;" class="shp2" d="M0.98 29.17L15.46 408.97L295.77 512.78L281.3 132.98L0.98 29.17Z" />
+		<path id="&lt;Path&gt;" class="shp3" d="M0.98 29.17L15.25 403.36C15.38 406.93 17.01 410.29 19.74 412.6L199.65 565.5C214.02 577.71 236.04 567.01 235.32 548.17L223.08 227.13C222.85 221.07 220.09 215.38 215.47 211.45L0.98 29.17Z" />
+	</g>
+</svg>
