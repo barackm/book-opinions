@@ -13,7 +13,7 @@
                     <h3>Login to your account</h1>
                 </div>
             </div>
-            <%= form_for(:session, url: sessions_path) do |f| %>
+            <%= form_with model: @user, url: sessions_path do |f| %>
             <div class="form-control">
                 <i class="bi bi-person"></i>
                 <%= f.text_field :username, placeholder: "Username", autofocus: true %>
