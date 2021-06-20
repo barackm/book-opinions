@@ -15,6 +15,11 @@
             <div class="form-control">
                 <%= f.text_field :text, placeholder:"Compose new review"  %>
             </div>
+            <div class="input-error-messages-wrapper edit-profile">
+                <%if @opinion.errors[:text][0]%>
+                <div class="input-error-message">Review content <%= @opinion.errors[:text][0] %></div>
+                <%end %>
+            </div>
         </div>
         <%end%>
         <%end%>

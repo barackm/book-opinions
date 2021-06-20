@@ -10,20 +10,40 @@
                 <i class="bi bi-camera-fill icon"></i>
                 <%= f.file_field :photo, placeholder: "Profile avatar"%>
             </div>
+            <div class="input-error-messages-wrapper edit-profile">
+                <%if @user.errors[:photo][0]%>
+                <div class="input-error-message">Photo must be 2Mb or less, and either jpg, jpeg or png</div>
+                <%end %>
+            </div>
             <%= label_tag (:cover_image) %>
             <div class="form-control-edit">
                 <i class="bi bi-image icon"></i>
                 <%= f.file_field :cover_image, placeholder: "Cover image"%>
+            </div>
+            <div class="input-error-messages-wrapper edit-profile">
+                <%if @user.errors[:cover_image][0]%>
+                <div class="input-error-message">Cover image must be 2Mb or less, and either jpg, jpeg or png</div>
+                <%end %>
             </div>
             <%= label_tag (:username) %>
             <div class="form-control-edit">
                 <i class="bi bi-person icon"></i>
                 <%= f.text_field :username, placeholder: "Username", autofocus: true, class:"edit-form" %>
             </div>
+            <div class="input-error-messages-wrapper edit-profile">
+                <%if @user.errors[:username][0]%>
+                <div class="input-error-message">Username <%= @user.errors[:username][0] %></div>
+                <%end %>
+            </div>
             <%= label_tag (:full_name) %>
             <div class="form-control-edit">
                 <i class="bi bi-person icon"></i>
                 <%= f.text_field :full_name, placeholder: "Full name",class:"edit-form" %>
+            </div>
+            <div class="input-error-messages-wrapper edit-profile">
+                <%if @user.errors[:full_name][0]%>
+                <div class="input-error-message">Full name <%= @user.errors[:full_name][0] %></div>
+                <%end %>
             </div>
             <div class="submit-btn-edit">
                 <%= f.submit "Update", class:"submit" %>

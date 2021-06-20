@@ -18,6 +18,11 @@
                 <i class="bi bi-person"></i>
                 <%= f.text_field :username, placeholder: "Username", autofocus: true %>
             </div>
+            <%if @user.errors[:username][0]%>
+            <div class="input-error-messages-wrapper">
+                <div class="input-error-message">Username <%= @user.errors[:username][0] %></div>
+            </div>
+            <%end %>
             <div class="submit-btn">
                 <%= f.submit "Login" %>
             </div>

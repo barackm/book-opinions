@@ -4,10 +4,15 @@ class User < ApplicationRecord
   before_save :populate_images, :format_username
   before_update :format_username
 
-  validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 14 }
+  validates :username, presence: true, uniqueness: true,
+                       length: { minimum: 3, maximum: 14, message: 'Username must have 3 to 14 characters.' }
   validates :full_name, presence: true
-  validates :photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..2.megabytes }
-  validates :cover_image, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..2.megabytes }
+  validates :photo,
+            blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..2.megabytes,
+                    message: 'Photo must be 2Mb or less, and either jpg, jpeg, png' }
+  validates :cover_image,
+            blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..2.megabytes,
+                    message: 'Cover image must be 2Mb or less, and either jpg, jpeg, png' }
   validates :photo, presence: false
   validates :cover_image, presence: false
 
@@ -25,8 +30,8 @@ class User < ApplicationRecord
     User.where.not(id: Array.wrap(following_users)).and(User.where.not(id: id))
   end
 
-  def timeline_opinions 
-    Opinion.where(author: (following_users.to_a << self)).order("created_at DESC")
+  def timeline_opinions
+    Opinion.where(author: (following_users.to_a << self)).order('created_at DESC')
   end
 
   def following?(follower)
@@ -36,12 +41,18 @@ class User < ApplicationRecord
   private
 
   def populate_images
-    self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'avatar.png')), filename: 'avatar.png', content_type: 'image/jpg') if !self.photo.attached? 
-    self.cover_image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'cover11.jpg')), filename: 'cover11.jpg', content_type: 'image/png') if !self.cover_image.attached? 
+    unless photo.attached?
+      photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'avatar.png')), filename: 'avatar.png',
+                   content_type: 'image/jpg')
+    end
+
+    return if cover_image.attached?
+
+    cover_image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'cover11.jpg')),
+                       filename: 'cover11.jpg', content_type: 'image/png')
   end
 
   def format_username
-    self.username = self.username.delete(" ").downcase
+    self.username = username.delete(' ').downcase
   end
-
 end

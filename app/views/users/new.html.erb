@@ -14,10 +14,20 @@
                 <i class="bi bi-person"></i>
                 <%= f.text_field :username, placeholder: "Username", autofocus: true %>
             </div>
+            <div class="input-error-messages-wrapper login">
+                <%if @user.errors[:username][0]%>
+                <div class="input-error-message">Username <%= @user.errors[:username][0] %></div>
+                <%end %>
+            </div>
             <div class="form-control">
                 <i class="bi bi-person"></i>
                 <%= f.text_field :full_name, placeholder: "Full name" %>
             </div>
+            <%if @user.errors[:full_name][0]%>
+            <div class="input-error-messages-wrapper login">
+                <div class="input-error-message">Full name <%= @user.errors[:full_name][0] %></div>
+            </div>
+            <%end %>
             <div class="submit-btn">
                 <%= f.submit "Signup" %>
             </div>
