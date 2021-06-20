@@ -5,10 +5,27 @@
 @import "variables";
 @import "colors";
 
+.cover-image-wrapper {
+  width: 100%;
+  height: 15rem;
+
+  @include flex-center(column);
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .signup-page-main-container {
   width: 100%;
   height: 100vh;
   overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
   background-color: $light-blue-color;
 
   @include flex-center(column);
@@ -153,6 +170,139 @@
           }
         }
       }
+    }
+  }
+}
+
+// user profile style
+
+.right-sidebar-main-container {
+  padding: 1rem 0;
+  position: fixed;
+  right: 1rem;
+  width: 300px;
+}
+
+.profile-header {
+  padding-top: 2rem;
+  border-bottom: $border;
+  width: 100%;
+
+  .user-controls {
+    @include flex-center(row);
+
+    .user-images-wrapper {
+      margin: 0 1rem;
+
+      .image {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .user-img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .user-details-icon {
+      @include flex-center(row);
+
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      border: $border;
+      border-color: $primary-color;
+
+      .icon {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .user-name-details {
+    margin-top: 1rem;
+
+    @include flex-center(column);
+
+    margin-bottom: 1rem;
+
+    .names {
+      margin: 0;
+      text-transform: uppercase;
+      color: $dark;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .joined {
+      color: $gray;
+    }
+  }
+}
+
+.profile-stats {
+  width: 100%;
+  border-bottom: $border;
+
+  ul {
+    @include flex-center(row);
+
+    li {
+      padding: 0.8rem 0;
+      flex: 1;
+
+      &:not(:last-child) {
+        border-right: $border;
+      }
+
+      @include flex-center(column);
+
+      .number {
+        margin: 0;
+        margin-bottom: 0.3rem;
+      }
+
+      .stat {
+        color: $gray;
+        font-weight: 300;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.followed-by-area {
+  border-bottom: $border;
+  width: 100%;
+  margin-bottom: 0.8rem;
+
+  .followed-by-text {
+    @include flex-center(row);
+
+    justify-content: flex-start;
+    padding: 1rem 0;
+  }
+
+  h4 {
+    margin: 0;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+    color: $gray;
+    font-weight: 400;
+  }
+}
+
+.people-to-follow-wrapper {
+  .follower-item-container {
+    .follower-details-wrapper {
+      margin-left: 1rem;
+    }
+
+    .following-btns-wrapper {
+      margin-right: 1rem;
     }
   }
 }

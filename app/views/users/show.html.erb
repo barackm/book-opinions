@@ -1,8 +1,12 @@
 <div class="main-opinion-wrapper">
     <div class="opinion-content-area">
+        <div class="cover-image-wrapper">
+            <%= image_tag(@user.cover_image)%>
+        </div>
         <div class="header">
             <%= link_to "Opinions" ,root_path %>
         </div>
+        <% if @user.id == current_user.id %>
         <%= form_with model: @opinion do |f| %>
         <div class="post-input-wrapper">
             <div class="title">
@@ -13,17 +17,20 @@
             </div>
         </div>
         <%end%>
+        <%end%>
 
         <div class="opinions-items-wrapper">
             <div class="items-header">
-                <%= @opinions.count%> new Reviews
+                4 new Reviews
             </div>
             <div class="opinions">
-                <%= render @opinions %>
+                <% @user.opinions.each do |opinion| %>
+                <%= render "opinions/opinion", opinion: opinion %>
+                <%end %>
             </div>
         </div>
     </div>
     <div class="opinion-right-sidebar">
-        <%= render "right_sidebar", people_to_follow: @people_to_follow  %>
+        <%= render "right_sidebar", user: @user%>
     </div>
 </div>

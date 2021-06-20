@@ -1,0 +1,21 @@
+<div class="opinion-main-item-container">
+    <%= link_to user_path(opinion.author) do%>
+    <div class="user-image">
+        <div class="image">
+            <%= image_tag(opinion.author.photo) %>
+        </div>
+    </div>
+    <%end%>
+
+    <div class="opinion-details">
+        <%= link_to user_path(opinion.author) do%>
+        <div class="user-name">
+            <h3><%= opinion.author.full_name.capitalize%></h3>
+            <span><%= opinion.created_at.strftime("%Y/%m/%d")%></span>
+        </div>
+        <%end%>
+        <div class="opinion-content">
+            <%= opinion.text %>
+        </div>
+    </div>
+</div>

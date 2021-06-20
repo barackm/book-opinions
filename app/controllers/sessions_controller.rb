@@ -6,9 +6,7 @@ class SessionsController < ApplicationController
     end
 
     def create 
-        
         @user = User.find_by(username: params[:username])
-        # puts "----------#{params}--------"
         if @user
             session[:username] = @user.username
             flash[:notice] = "Welcome to Book Reviewer ✨" 
@@ -20,7 +18,6 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        puts "----- wanted to delete a user"
         session[:username] = nil
         flash[:notice] = "You have successfully signed out ✨" 
         redirect_to new_session_path

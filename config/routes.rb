@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users
   resources :opinions
   resources :sessions, only: [:new, :create, :destroy]
+  resources :followings, only: [:create, :destroy]
 end

@@ -1,0 +1,64 @@
+<div class="right-sidebar-main-container profile">
+    <div class="profile-header">
+        <div class="user-controls">
+            <%if user.id != current_user.id%>
+            <div class="following-details">
+                <%= render_following_btn(user) %>
+            </div>
+            <%end%>
+
+            <div class="user-images-wrapper">
+                <div class="image">
+                    <%= image_tag(user.photo, class:"user-img") %>
+                </div>
+            </div>
+            <%if user.id != current_user.id%>
+            <div class="user-details-icon">
+                <i class="bi bi-list icon"></i>
+            </div>
+            <% else %>
+            <%= link_to root_path  do %>
+            <div class="user-details-icon">
+                <i class="bi bi-pencil-fill icon"></i>
+            </div>
+            <%end %>
+            <%end %>
+        </div>
+        <div class="user-name-details">
+            <h3 class="names"><%= user.full_name %></h3>
+            <span class="joined">Joined at <%= user.created_at.strftime("%Y/%m/%d")%></span>
+
+        </div>
+    </div>
+    <div class="profile-stats">
+        <ul>
+            <li>
+                <h3 class="number">200</h3>
+                <span class="stat">Tweets</span>
+            </li>
+            <li>
+                <h3 class="number">200</h3>
+                <span class="stat">Following</span>
+            </li>
+            <li>
+                <h3 class="number">200</h3>
+                <span class="stat">Followers</span>
+            </li>
+        </ul>
+    </div>
+    <div class="followed-by-area">
+        <div class="followed-by-text">
+            <h4>Followed by</h4>
+        </div>
+    </div>
+    <div class="people-to-follow-wrapper">
+        <% user.following_users.each do |follower| %>
+        <%= render "shared/follower", follower: follower %>
+        <%end%>
+    </div>
+    <div class="people-to-follow-wrapper">
+        <% user.followers.each do |follower| %>
+        <%= render "shared/follower", follower: follower %>
+        <%end%>
+    </div>
+</div>

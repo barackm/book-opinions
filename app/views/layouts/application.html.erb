@@ -12,9 +12,27 @@
 </head>
 
 <body>
-    <%= flash.notice %>
-    <%= flash.alert %>
-    <%= yield %>
+    <div class="flash-messages-main-container <%= "notice" if flash.notice  %> <%= "alert" if flash.alert  %>" data-controller="alert" data-alert-target="flash">
+        <p>
+            <%= flash.alert %>
+            <%= flash.notice %>
+        </p>
+        <a data-alert-target="close" class="close-notification" data-action="click->alert#closeAlert"><i class="bi bi-x"></i></a>
+    </div>
+    <div class="application-main-container">
+
+        <% if current_user %>
+        <div class="application-sidebar">
+            <%= render "shared/sidebar" %>
+        </div>
+        <%end%>
+        <div class="application-wrapper">
+            <% if current_user %>
+            <%= render "shared/header"%>
+            <%end%>
+            <%= yield %>
+        </div>
+    </div>
 </body>
 
 </html>
