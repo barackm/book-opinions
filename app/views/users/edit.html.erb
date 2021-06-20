@@ -1,0 +1,41 @@
+<div class="main-opinion-wrapper">
+    <div class="opinion-content-area edit-profile">
+        <div class="edit-user-header">
+            <h1>Edit profile</h1>
+        </div>
+        <div class="edit-profile-form-wrapper">
+            <%= form_with model: @user do |f| %>
+            <%= label_tag (:photo) %>
+            <div class="form-control-edit">
+                <i class="bi bi-camera-fill icon"></i>
+                <%= f.file_field :photo, placeholder: "Profile avatar"%>
+            </div>
+            <%= label_tag (:cover_image) %>
+            <div class="form-control-edit">
+                <i class="bi bi-image icon"></i>
+                <%= f.file_field :cover_image, placeholder: "Cover image"%>
+            </div>
+            <%= label_tag (:username) %>
+            <div class="form-control-edit">
+                <i class="bi bi-person icon"></i>
+                <%= f.text_field :username, placeholder: "Username", autofocus: true, class:"edit-form" %>
+            </div>
+            <%= label_tag (:full_name) %>
+            <div class="form-control-edit">
+                <i class="bi bi-person icon"></i>
+                <%= f.text_field :full_name, placeholder: "Full name",class:"edit-form" %>
+            </div>
+            <div class="submit-btn-edit">
+                <%= f.submit "Update", class:"submit" %>
+            </div>
+            <%end %>
+        </div>
+        <div class="delete-account-wrapper">
+            <%= link_to "Cancel my account", user_path(current_user), class:"submit-btn-delete", method: :delete, data: { confirm: "Are you sure to cancel your account?" }%>
+        </div>
+    </div>
+
+    <div class="opinion-right-sidebar">
+        <%= render "right_sidebar", user: @user%>
+    </div>
+</div>

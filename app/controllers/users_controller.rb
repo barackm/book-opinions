@@ -22,7 +22,7 @@ class UsersController < ApplicationController
             @user = User.new(user_params)
             if (@user.save)
                 session[:username] = @user.username
-                flash[:notice] = "Welcome to Book Reviewer ✨"
+                flash[:notice] = "Hi #{@user.full_name.split(" ")[0].capitalize}, Welcome to Book Reviewer ✨"
                 redirect_to root_path
             else
                 flash.now[:alert] = "An Unexpected error accured. 😥"
@@ -31,10 +31,33 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit 
+        @user = current_user
+    end
+
+    def update 
+        @user = User.find(current_user.id);
+        if @user.update(user_params)
+            flash[:notice] = "Profile updated successfully ✨"
+            redirect_to root_path
+        else
+            flash.now[:alert] = "Error while trying to update your account. 😥"
+            render "edit"
+        end
+    end
+
+    def destroy
+        @user = User.find(current_user.id);
+        @user.destroy 
+
+        flash[:notice] = "Account canceled successfully.✨"
+        redirect_to root_path
+    end
+
     private
 
     def user_params
-        params.require(:user).permit(:username, :full_name)
+        params.require(:user).permit(:username, :full_name, :photo, :cover_image)
     end
 
     def check_logged_in_user
