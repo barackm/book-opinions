@@ -19,7 +19,9 @@
                 <%= @opinions.count%> new Reviews
             </div>
             <div class="opinions">
-                <%= render @opinions %>
+                <%@opinions.each do |opinion| %>
+                <%= render "opinion",opinion: opinion, comment: @comment %>
+                <%end %>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
 
 <body>
     <div class="flash-messages-main-container <%= "notice" if flash.notice  %> <%= "alert" if flash.alert  %>" data-controller="alert" data-alert-target="flash">
-        <p>
+        <p class="message">
             <%= flash.alert %>
             <%= flash.notice %>
         </p>

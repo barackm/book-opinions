@@ -128,69 +128,72 @@
 }
 
 .opinion-main-item-container {
-  @include flex-center(row);
+  @include flex-center(column);
 
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin-bottom: 1.5rem;
-  border-bottom: $border;
-  padding-bottom: 1rem;
+  .opinion-item-wrapper {
+    @include flex-center(row);
 
-  .user-image {
-    width: 3rem;
-    margin-right: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
 
-    .image {
+    .user-image {
       width: 3rem;
-      height: 3rem;
-      border-radius: 0.2rem;
-      overflow: hidden;
+      margin-right: 1rem;
 
-      img {
-        width: 100%;
-        height: 100%;
+      .image {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.2rem;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
-  }
 
-  .opinion-details {
-    @include flex-center(column);
+    .opinion-details {
+      @include flex-center(column);
 
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    .user-name {
-      width: 100%;
-
-      @include flex-space-between(row);
-
+      justify-content: flex-start;
       align-items: flex-start;
-      margin-bottom: 0.5rem;
 
-      h3 {
-        color: lighten($dark, 20%);
-        margin: 0;
-        margin-right: 0.5rem;
-        font-size: 1rem;
-        text-transform: capitalize;
+      .user-name {
+        width: 100%;
 
-        &:hover {
-          text-decoration: underline;
-          color: $primary-color;
+        @include flex-space-between(row);
+
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+
+        h3 {
+          color: lighten($dark, 20%);
+          margin: 0;
+          margin-right: 0.5rem;
+          font-size: 1rem;
+          text-transform: capitalize;
+
+          &:hover {
+            text-decoration: underline;
+            color: $primary-color;
+          }
+        }
+
+        span {
+          display: block;
+          margin: 0;
+          font-size: 0.9rem;
+          color: $dark-gray;
+          // margin-top: 0.2rem;
         }
       }
 
-      span {
-        display: block;
-        margin: 0;
-        font-size: 0.9rem;
+      .opinion-content {
         color: $dark-gray;
-        // margin-top: 0.2rem;
       }
-    }
-
-    .opinion-content {
-      color: $dark-gray;
     }
   }
 }
@@ -325,4 +328,120 @@
       }
     }
   }
+}
+
+.opinion-details-stats {
+  width: 100%;
+  border-top: $border;
+  border-bottom: $border;
+  padding: 0.5rem 0;
+
+  @include flex-space-between(row);
+
+  .likes-count-details {
+    @include flex-center(row);
+
+    .count {
+      margin-right: 0.6rem;
+    }
+  }
+
+  .comments-count-details {
+    @include flex-center(row);
+
+    .count {
+      color: $gray;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      color: $gray;
+      margin-left: 0.4rem;
+      font-weight: 400;
+    }
+  }
+
+  .voting-btn {
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.2rem;
+    background-color: $primary-color;
+    color: $white;
+    font-size: 0.9rem;
+
+    @include flex-center(row);
+
+    .count-badge {
+      padding: 0.1rem 0.2rem;
+      border-radius: 0.1rem;
+      background-color: $white;
+      color: $primary-color;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-right: 0.3rem;
+    }
+
+    &:hover {
+      background-color: lighten($primary-color, 5%);
+    }
+
+    &.downvote {
+      background-color: $warning;
+
+      .count-badge {
+        color: $warning;
+      }
+
+      &:hover {
+        background-color: lighten($warning, 5%);
+      }
+    }
+  }
+}
+
+.opinion-comments-area {
+  width: 100%;
+  padding-top: 0.8rem;
+
+  @include flex-center(column);
+
+  align-items: flex-start;
+
+  .comments-are {
+    width: 100%;
+  }
+
+  .comment-input-wrapper {
+    padding-left: 4rem;
+
+    .title-comment {
+      text-transform: uppercase;
+      color: $gray;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      .form-control-comment {
+        border: $border;
+        width: 100%;
+
+        @include flex-center(row);
+
+        .input {
+          background-color: transparent;
+          padding: 0.6rem 0.7rem;
+          width: 95%;
+          outline: none;
+          border: none;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.opinion-comments-list {
+  margin-left: 4rem;
+  padding-top: 1rem;
 }

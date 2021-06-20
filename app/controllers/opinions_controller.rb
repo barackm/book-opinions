@@ -4,6 +4,7 @@ class OpinionsController < ApplicationController
         @people_to_follow = current_user.people_to_follow
         @opinions = current_user.timeline_opinions
         @opinion = Opinion.new
+        @comment = Comment.new
     end
 
     def create 

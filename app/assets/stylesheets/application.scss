@@ -48,6 +48,7 @@ input {
   height: 100%;
   left: 0;
   top: 0;
+  background-color: $light-gray;
   overflow-y: auto;
 
   @include flex-center(row);
@@ -239,7 +240,7 @@ header {
   transform: translateY(-100vh);
   background-color: aquamarine;
 
-  p {
+  .message {
     margin-left: 2rem;
   }
 

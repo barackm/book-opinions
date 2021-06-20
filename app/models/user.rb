@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :cover_image, presence: false
 
   has_many :opinions, foreign_key: 'author_id', class_name: 'Opinion'
+  has_many :comments
+  has_many :votes
   has_many :followings, class_name: 'Following', foreign_key: 'follower_id'
   has_many :following_users, through: :followings, source: :followed
 
