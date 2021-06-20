@@ -12,10 +12,10 @@ class OpinionsController < ApplicationController
         @opinion = user.opinions.build(opinion_params)
         if @opinion.save
             flash[:notice] = "Opinion created successfully."
-            redirect_to root_path 
+            redirect_to request.referrer
         else
             flash[:alert] = "Sorry the opinion was not saved."
-            redirect_to root_path
+            redirect_to request.referrer
         end
     end
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "opinions#index"
   resources :users
   resources :opinions do 
+    resources :votes, only: [:create, :destroy]
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :comments, only: [:create]

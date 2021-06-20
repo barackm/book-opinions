@@ -1,9 +1,9 @@
 <div class="follower-item-container">
     <div class="follower-details-wrapper">
         <%= link_to user_path(follower) do%>
-        <div class="user-image">
-            <div class="image">
-                <%= image_tag(follower.photo)%>
+        <div class="user-image-follower">
+            <div class="image-follower">
+                <%= image_tag(follower.photo, class:"img")%>
             </div>
         </div>
         <%end%>

@@ -25,7 +25,7 @@
             </div>
             <div class="opinions">
                 <% @user.opinions.each do |opinion| %>
-                <%= render "opinions/opinion", opinion: opinion %>
+                <%= render "opinions/opinion", opinion: opinion, comment: @comment %>
                 <%end %>
             </div>
         </div>

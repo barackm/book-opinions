@@ -9,6 +9,7 @@
   @include flex-center(row);
 
   align-items: flex-start;
+  margin-bottom: 1rem;
   justify-content: flex-start;
 
   .comment-owner-image {

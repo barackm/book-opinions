@@ -130,6 +130,9 @@
 .opinion-main-item-container {
   @include flex-center(column);
 
+  border-bottom: $border;
+  margin-bottom: 1rem;
+
   .opinion-item-wrapper {
     @include flex-center(row);
 
@@ -291,16 +294,16 @@
     justify-content: flex-start;
   }
 
-  .user-image {
+  .user-image-follower {
     width: 4rem;
 
-    .image {
+    .image-follower {
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
       overflow: hidden;
 
-      img {
+      .img {
         width: 100%;
         height: 100%;
       }

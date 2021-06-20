@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
         comment = opinion.comments.build(user_id: current_user.id, content: comment_params[:content])
         if comment.save 
             flash[:notice] = "Welcome to Book Reviewer ✨" 
-            redirect_to root_path
+            redirect_to request.referrer
         else
             flash[:alert] = "Oooh, The comment couldin't be saved. 😥"
-            redirect_to new_session_path
+            redirect_to request.referrer
         end
     end
 
