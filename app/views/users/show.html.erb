@@ -21,7 +21,7 @@
 
         <div class="opinions-items-wrapper">
             <div class="items-header">
-                4 new Reviews
+                <%= @user.opinions.count %> new Reviews
             </div>
             <div class="opinions">
                 <% @user.opinions.each do |opinion| %>

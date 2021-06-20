@@ -213,15 +213,23 @@
       color: $gray;
       font-size: 16px;
       font-weight: 400;
+      margin-left: 1rem;
 
       @include flex-center(row);
 
       text-transform: uppercase;
     }
 
-    a {
+    .icon {
+      margin-right: 1rem;
+
       svg {
         width: 0.8rem;
+
+        path {
+          fill: $gray;
+          stroke: $gray;
+        }
       }
     }
   }
