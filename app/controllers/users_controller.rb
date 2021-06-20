@@ -14,10 +14,10 @@ class UsersController < ApplicationController
     end
 
     def create 
-        @user = User.find_by(username: user_params[:username])
-
+        
+        @user = User.find_by(username: user_params[:username].delete(" ").downcase.to_s)
         if @user 
-            flash.now[:alert] = "User already exit, #{helpers.link_to("Login instead", sessions_path(:username => @user.username), method: :post)}.".html_safe
+            flash.now[:alert] = "User already exit, #{helpers.link_to("Login instead", sessions_path(:user => {username: @user.username}), method: :post)}.".html_safe
             render 'new'
         else
             @user = User.new(user_params)
@@ -38,7 +38,8 @@ class UsersController < ApplicationController
 
     def update 
         @user = User.find(current_user.id);
-        if @user.update(user_params)
+        if @user.update(update_params)
+            session[:username] = @user.username
             flash[:notice] = "Profile updated successfully ✨"
             redirect_to root_path
         else
@@ -58,6 +59,10 @@ class UsersController < ApplicationController
     private
 
     def user_params
+        params.require(:user).permit(:username, :full_name)
+    end
+
+    def update_params
         params.require(:user).permit(:username, :full_name, :photo, :cover_image)
     end
 

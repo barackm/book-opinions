@@ -6,14 +6,16 @@ class SessionsController < ApplicationController
     end
 
     def create 
-        @user = User.find_by(username: params[:username])
+        username = params[:user][:username].delete(" ").downcase
+
+        @user = User.find_by(username:username)
         if @user
             session[:username] = @user.username
             flash[:notice] = "Welcome to Book Reviewer ✨" 
             redirect_to root_path
         else
-            flash.now[:alert] = "Invalid username. 😥"
-            render 'new'
+            flash[:alert] = "Invalid username. 😥"
+            redirect_to new_session_path
         end
     end
 

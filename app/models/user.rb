@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_one_attached :photo
   has_one_attached :cover_image
-  before_save :populate_images
+  before_save :populate_images, :format_username
+  before_update :format_username
 
   validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 14 }
   validates :full_name, presence: true
@@ -33,13 +34,12 @@ class User < ApplicationRecord
   private
 
   def populate_images
-    # cover_images = ["cover1.jpg","cover2.jpg","cover3.jpg","cover1.jpg","cover5.jpg","cover6.jpg","cover7.jpg",].sample
-    # avatar_images = ["av1.png","av2.png","av3.png","av4.png","av5.png","av6.png","av7.png","av8.png"].sample
     self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'avatar.png')), filename: 'avatar.png', content_type: 'image/jpg') if !self.photo.attached? 
     self.cover_image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'cover11.jpg')), filename: 'cover11.jpg', content_type: 'image/png') if !self.cover_image.attached? 
-    # self.cover_image = cover_images if self.photo.nil?
+  end
 
-    
+  def format_username
+    self.username = self.username.delete(" ").downcase
   end
 
 end
