@@ -1,5 +1,6 @@
 class UsersController < ApplicationController    
-    before_action :check_logged_in_user, only: [:create, :new]
+    before_action :check_logged_in_user, only: [:create, :new] 
+    before_action :check_current_user, only: [:edit, :update, :destroy]
 
     def new 
         @user = User.new
@@ -62,5 +63,10 @@ class UsersController < ApplicationController
 
     def check_logged_in_user
           signed_in? and redirect_to root_path
+    end
+
+    def check_current_user
+        user = User.where(id: params[:id])
+        redirect_to root_path if user[0]&.id != current_user.id
     end
 end

@@ -1,4 +1,4 @@
-<div class="side-bar-main-container">
+<div class="side-bar-main-container" data-controller="sidebar">
     <div class="sidebar-header">
         <%= link_to user_path(current_user) do %>
         <div class="user-details">
@@ -25,7 +25,7 @@
     <ul>
         <li>
             <%= link_to root_path do%>
-            <div class="link-item active">
+            <div class="link-item active" data-sidebar-target="home">
                 <div class="icon-wrapper">
                     <i class="bi bi-house-fill"></i>
                 </div>
@@ -35,7 +35,7 @@
         </li>
         <li>
             <%= link_to user_path(current_user) do%>
-            <div class="link-item">
+            <div class="link-item" data-sidebar-target="profile">
                 <div class="icon-wrapper">
                     <i class="bi bi-person-fill"></i>
                 </div>
