@@ -35,9 +35,10 @@
                 <div class="title-comment">
                     Comments
                 </div>
-                <%= form_with model: opinion do |f| %>
+                <%= form_with model: comment do |f| %>
                 <div class="form-control-comment">
                     <%= f.text_field :content, placeholder:"Leave a comment" , class:"input" %>
+                    <%= f.hidden_field :opinion_id, value: opinion.id %>
                 </div>
                 <%end%>
             </div>
