@@ -46,6 +46,32 @@
             </li>
         </ul>
     </div>
+
+    <% if user.id == current_user.id %>
+    <div class="followers-following-list" data-controller="followers">
+        <div class="tabs-wrapper">
+            <ul>
+                <li>
+                    <a data-followers-target="followingBtn" class="" data-action="click->followers#showFollowing"> <span class="tab-count"><%= user.following_users.count %></span> Following</a>
+                </li>
+                <li>
+                    <a data-followers-target="followersBtn" class="" data-action="click->followers#showFollowers"> <span class="tab-count"><%= user.followers.count %></span> Followers</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="people-to-follow-wrapper current-user following-show" data-followers-target="following">
+        <% user.following_users.each do |follower| %>
+        <%= render "shared/follower", follower: follower %>
+        <%end%>
+    </div>
+    <div class="people-to-follow-wrapper current-user followers-show" data-followers-target="followers">
+        <% user.followers.each do |follower| %>
+        <%= render "shared/follower", follower: follower %>
+        <%end%>
+    </div>
+    <% else %>
     <div class="followed-by-area">
         <div class="followed-by-text">
             <h4>Followed by</h4>
@@ -56,4 +82,5 @@
         <%= render "shared/follower", follower: follower %>
         <%end%>
     </div>
+    <% end %>
 </div>

@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-# rubocop:disable Lint/UselessAssignment
-
 RSpec.describe Following, type: :model do
   describe 'associations', type: :model do
     it { should belong_to(:follower).class_name('User') }
@@ -27,7 +25,7 @@ RSpec.describe Following, type: :model do
       user1 = User.create(username: 'john', full_name: 'john mark')
       user2 = User.create(username: 'Simon', full_name: 'simon dark')
       Following.create(follower_id: user1.id, followed_id: user2.id)
-      follower = user2.followers.where(id: user1.id) 
+      follower = user2.followers.where(id: user1.id)
 
       expect(follower.empty?).to eq(false)
     end
@@ -36,21 +34,17 @@ RSpec.describe Following, type: :model do
       user1 = User.create(username: 'john', full_name: 'john mark')
       user2 = User.create(username: 'Simon', full_name: 'simon dark')
       Following.create(follower_id: user1.id, followed_id: user2.id)
-      follower = user2.followers.where(id: user2.id) 
+      follower = user2.followers.where(id: user2.id)
 
       expect(follower.empty?).to eq(true)
     end
 
-    it 'should return true is the first user is following the second' do 
+    it 'should return true is the first user is following the second' do
       user1 = User.create(username: 'john', full_name: 'john mark')
       user2 = User.create(username: 'Simon', full_name: 'simon dark')
       Following.create(follower_id: user1.id, followed_id: user2.id)
 
-      
       expect(user1.following?(user2)).to eq(true)
     end
-
   end
 end
-
-# rubocop:enable Lint/UselessAssignment

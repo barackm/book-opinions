@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'the signin process', type: :feature do
   before :each do
-  User.create(username: 'john', full_name: 'john mark')
+    User.create(username: 'john', full_name: 'john mark')
   end
   it 'signs @user in' do
     visit '/sessions/new'

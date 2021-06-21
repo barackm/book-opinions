@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :feature do
-    before :each do
-        User.create(username: 'john', full_name: 'john doe')
-    end
+  before :each do
+    User.create(username: 'john', full_name: 'john doe')
+  end
 
   it 'Should add a comment an opinion if logged in ' do
     visit '/sessions/new'
