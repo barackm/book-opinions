@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def people_to_follow
-    User.where.not(id: Array.wrap(following_users)).and(User.where.not(id: id))
+    User.where.not(id: Array.wrap(following_users)).and(User.where.not(id: id)).order('created_at DESC')
   end
 
   def timeline_opinions
