@@ -1,23 +1,13 @@
-require 'rails_helper'
-describe 'the sign up process', type: :feature do
-  it 'should not save user without username' do
-    user = User.new(full_name: 'John Doe')
-    expect(user.save).to be(false)
-  end
-
-  it 'should not save user full name' do
-    user = User.new(username: 'john')
-    expect(user.save).to be(false)
-  end
-
-  it 'should not save user username less than 3 characters' do
-    user = User.new(username: 'jo', full_name: 'john doe')
-    expect(user.save).to be(false)
-  end
-
-  it 'should save user with all fields' do
-    user = User.new(username: 'john', full_name: 'john doe')
-    user.save
-    expect(user.username).to eq('john')
-  end
+RSpec.describe User, type: :model do
+    
+    it { should have_many(:followings).class_name('Following') }
+    it { should have_many(:following_users).class_name('User') }
+    it { should have_many(:comments).class_name('Comment') }
+    it { should have_many(:votes).class_name('Vote') }
+    it { should have_one_attached(:photo)}
+    it { should have_one_attached(:cover_image)}
+    it { should validate_presence_of(:username) }
+    it { should validate_presence_of(:full_name) }
+    it { should validate_length_of(:full_name) }
+    it { should validate_length_of(:username) }
 end

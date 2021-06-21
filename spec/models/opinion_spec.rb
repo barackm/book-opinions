@@ -1,6 +1,12 @@
 require 'rails_helper'
 
-describe 'the signin process', type: :model do
+describe Opinion, type: :model do
+    it { should belong_to(:author).class_name('User') }
+    it { should have_many(:comments).class_name('Comment') }
+    it { should have_many(:votes).class_name('Vote') }
+    it { should validate_presence_of(:text) }
+    it { should validate_length_of(:text) }
+
 let(:user) { User.create(username: 'john', full_name: 'john mark') }
  context "Creating an opinion" do
     it "should create an opinion if all the data is given" do

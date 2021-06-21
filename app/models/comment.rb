@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates_presence_of :content
+  validates :content, presence: true, length: { minimum: 5 }
   belongs_to :user
   belongs_to :opinion
 end
