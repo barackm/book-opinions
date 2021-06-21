@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     opinion = Opinion.find(comment_params[:opinion_id])
     comment = opinion.comments.build(user_id: current_user.id, content: comment_params[:content])
     if comment.save
-      flash[:notice] = 'Welcome to Book Reviewer ✨'
+      flash[:notice] = 'Comment added successfully ✨'
     else
       flash[:alert] = "Oooh, The comment couldin't be saved. 😥 Comment content #{comment.errors[:content][0]}"
     end
