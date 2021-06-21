@@ -336,3 +336,11 @@ header {
 .input-error-messages-wrapper.edit-profile {
   padding-left: 0.5rem;
 }
+
+.invisible-submit-btn {
+  width: 1px;
+  height: 1px;
+  background-color: transparent;
+  border: none;
+  opacity: 0;
+}

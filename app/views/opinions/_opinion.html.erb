@@ -39,6 +39,7 @@
                 <div class="form-control-comment">
                     <%= f.text_field :content, placeholder:"Leave a comment" , class:"input" %>
                     <%= f.hidden_field :opinion_id, value: opinion.id %>
+                    <%= f.submit "Post", class:"invisible-submit-btn"%>
                 </div>
                 <%end%>
             </div>
