@@ -1,5 +1,5 @@
 <div class="comment-item-container">
-    <%= link_to users_path(comment.user) do %>
+    <%= link_to user_path(comment.user) do %>
     <div class="comment-owner-image">
         <div class="image">
             <%= image_tag(comment.user.photo) %>
@@ -8,7 +8,7 @@
     <%end %>
     <div class="comment-details">
         <div class="comment-owner-names">
-            <%= link_to users_path(comment.user) do%>
+            <%= link_to user_path(comment.user) do%>
             <h3><%= comment.user.full_name %></h3>
             <%end %>
             <span><%= comment.created_at.strftime("%Y/%m/%d")%></span>
