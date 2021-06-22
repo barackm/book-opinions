@@ -52,7 +52,7 @@
         <div class="tabs-wrapper">
             <ul>
                 <li>
-                    <a data-followers-target="followingBtn" class="" data-action="click->followers#showFollowing"> Following</a>
+                    <a data-followers-target="followingBtn" class="active" data-action="click->followers#showFollowing"> Following</a>
                 </li>
                 <li>
                     <a data-followers-target="followersBtn" class="" data-action="click->followers#showFollowers">Followed by</a>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div class="people-to-follow-wrapper current-user following-show" data-followers-target="following">
+    <div class="people-to-follow-wrapper current-user following-show active" data-followers-target="following">
         <% user.following_users.each do |follower| %>
         <%= render "shared/follower", follower: follower %>
         <%end%>
