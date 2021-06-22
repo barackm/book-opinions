@@ -1,0 +1,32 @@
+<div class="main-opinion-wrapper">
+    <div class="opinion-content-area">
+        <div class="header">
+            <%= link_to "Opinions" ,root_path %>
+        </div>
+        <%= form_with model: @opinion do |f| %>
+        <div class="post-input-wrapper">
+            <div class="title">
+                Add review
+            </div>
+            <div class="form-control">
+                <%= f.text_field :text, placeholder:"Compose new review"  %>
+            </div>
+            <%= f.submit "Post", class:"invisible-submit-btn"%>
+        </div>
+        <%end%>
+
+        <div class="opinions-items-wrapper">
+            <div class="items-header">
+                <%= @opinions.count%> new Reviews
+            </div>
+            <div class="opinions">
+                <%@opinions.each do |opinion| %>
+                <%= render "opinion", opinion: opinion, comment: @comment %>
+                <%end %>
+            </div>
+        </div>
+    </div>
+    <div class="opinion-right-sidebar">
+        <%= render "right_sidebar", people_to_follow: @people_to_follow  %>
+    </div>
+</div>

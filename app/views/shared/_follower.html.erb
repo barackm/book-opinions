@@ -1,0 +1,20 @@
+<div class="follower-item-container">
+    <div class="follower-details-wrapper">
+        <%= link_to user_path(follower) do%>
+        <div class="user-image-follower">
+            <div class="image-follower">
+                <%= image_tag(follower.photo, class:"img")%>
+            </div>
+        </div>
+        <%end%>
+        <div class="follower-details">
+            <%= link_to user_path(follower) do%>
+            <h3 class="name"><%= follower.full_name.capitalize %></h3>
+            <%end%>
+            <span class="joined">Joined at <%= follower.created_at.strftime("%Y/%m/%d")%></span>
+        </div>
+    </div>
+    <div class="following-btns-wrapper">
+        <%= render_following_btn(follower) %>
+    </div>
+</div>

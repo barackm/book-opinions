@@ -1,0 +1,71 @@
+// Place all the styles related to the followings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "mixins/display";
+@import "colors";
+@import "variables";
+
+.followers-following-list {
+  width: 100%;
+
+  @include flex-center(column);
+
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+
+  .tabs-wrapper {
+    width: 100%;
+    border-bottom: $border;
+
+    @include flex-center(row);
+
+    ul {
+      width: 100%;
+
+      @include flex-center(row);
+
+      li {
+        flex: 1;
+
+        @include flex-center(row);
+
+        a {
+          cursor: pointer;
+          padding: 0.7rem 0;
+          text-transform: uppercase;
+          color: $gray;
+          border-bottom: 3px solid transparent;
+
+          @include flex-center(row);
+
+          width: 100%;
+          flex: 1;
+
+          span {
+            color: $dark;
+            margin-right: 0.5rem;
+          }
+
+          &.active {
+            border-bottom: 3px solid $primary-color;
+            color: $dark;
+
+            span {
+              color: $dark;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.people-to-follow-wrapper.current-user {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

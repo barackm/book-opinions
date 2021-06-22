@@ -1,21 +1,33 @@
 class SessionsController < ApplicationController
-    def new 
-        @user = User.new
-    end
+  before_action :check_logged_in_user, only: %i[create new]
 
-    def create 
-        @user = User.find_by(username: params[:username])
-        if @user
-            session[:username] = @user.username
-            flash[:notice] = "Welcome to Book Reviewer ✨" 
-            redirect_to root_path
-        else
-            flash.now[:alert] = "An Unexpected error accured. 😥"
-            redirect_to new_session_path
-        end
-    end
+  def new
+    @user = User.new
+  end
 
-    def destroy
-        session[:username] = nil
+  def create
+    username = params[:user][:username].delete(' ').downcase
+
+    @user = User.find_by(username: username)
+    if @user
+      session[:username] = @user.username
+      flash[:notice] = "Hi #{@user.full_name.split[0].capitalize}, Welcome to Book Reviewer ✨"
+      redirect_to root_path
+    else
+      flash[:alert] = 'Invalid username. 😥'
+      redirect_to new_session_path
     end
+  end
+
+  def destroy
+    session[:username] = nil
+    flash[:notice] = 'You have successfully signed out ✨'
+    redirect_to new_session_path
+  end
+
+  private
+
+  def check_logged_in_user
+    signed_in? and redirect_to root_path
+  end
 end

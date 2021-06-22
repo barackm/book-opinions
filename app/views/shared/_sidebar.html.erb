@@ -1,0 +1,59 @@
+<div class="side-bar-main-container" data-controller="sidebar">
+    <div class="sidebar-header">
+        <%= link_to user_path(current_user) do %>
+        <div class="user-details">
+            <div class="user-image">
+                <div class="image">
+                    <%= image_tag(current_user.photo)%>
+                </div>
+            </div>
+            <div class="names"><%= current_user.full_name.truncate(15) %></div>
+        </div>
+        <%end%>
+        <div class="following-details">
+            <div class="following">
+                <h3><%= current_user.following_users.count%></h3>
+                <span>Following</span>
+            </div>
+            <div class="following followers">
+                <h3><%= current_user.followers.count%></h3>
+                <span>Followers</span>
+            </div>
+        </div>
+    </div>
+
+    <ul>
+        <li>
+            <%= link_to root_path do%>
+            <div class="link-item active" data-sidebar-target="home">
+                <div class="icon-wrapper">
+                    <i class="bi bi-house-fill"></i>
+                </div>
+                <div class="link_name">Home</div>
+            </div>
+            <%end%>
+        </li>
+        <li>
+            <%= link_to user_path(current_user) do%>
+            <div class="link-item" data-sidebar-target="profile">
+                <div class="icon-wrapper">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <div class="link_name">Profile</div>
+            </div>
+
+            <%end%>
+        </li>
+        <li>
+            <%= link_to session_path(current_user), method: :delete do%>
+            <div class="link-item">
+                <div class="icon-wrapper">
+                    <i class="bi bi-door-closed-fill"></i>
+                </div>
+                <div class="link_name">Sign out</div>
+            </div>
+
+            <%end%>
+        </li>
+    </ul>
+</div>

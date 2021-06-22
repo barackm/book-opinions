@@ -1,0 +1,53 @@
+<div class="opinion-main-item-container">
+    <div class="opinion-item-wrapper">
+        <%= link_to user_path(opinion.author) do%>
+        <div class="user-image">
+            <div class="image">
+                <%= image_tag(opinion.author.photo) %>
+            </div>
+        </div>
+        <%end%>
+
+        <div class="opinion-details">
+            <%= link_to user_path(opinion.author) do%>
+            <div class="user-name">
+                <h3><%= opinion.author.full_name.capitalize%></h3>
+                <span><%= opinion.created_at.strftime("%Y/%m/%d")%></span>
+            </div>
+            <%end%>
+            <div class="opinion-content">
+                <%= opinion.text %>
+            </div>
+        </div>
+    </div>
+    <div class="opinion-details-stats">
+        <div class="likes-count-details">
+            <%= render_votting_btn(opinion) %>
+        </div>
+        <div class="comments-count-details">
+            <span class="count"><%= opinion.comments.count %></span>
+            <h4>Comments<h4>
+        </div>
+    </div>
+    <div class="opinion-comments-area">
+        <div class="comments-are">
+            <div class="comment-input-wrapper">
+                <div class="title-comment">
+                    Comments
+                </div>
+                <%= form_with model: comment do |f| %>
+                <div class="form-control-comment">
+                    <%= f.text_field :content, placeholder:"Leave a comment" , class:"input" %>
+                    <%= f.hidden_field :opinion_id, value: opinion.id %>
+                    <%= f.submit "Comment", class:"invisible-submit-btn"%>
+                </div>
+                <%end%>
+            </div>
+            <div class="opinion-comments-list">
+                <% opinion.comments.order_by_most_recent.each do |comment| %>
+                <%= render "comments/comment", comment: comment %>
+                <%end %>
+            </div>
+        </div>
+    </div>
+</div>

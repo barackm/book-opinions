@@ -1,0 +1,70 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "mixins/display";
+@import "colors";
+@import "variables";
+
+.comment-item-container {
+  @include flex-center(row);
+
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+
+  .comment-owner-image {
+    width: 3rem;
+
+    .image {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.2rem;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .comment-details {
+    @include flex-center(column);
+
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .comment-owner-names {
+      @include flex-center(row);
+
+      justify-content: flex-start;
+      margin-bottom: 0.3rem;
+      width: 100%;
+
+      h3 {
+        margin: 0;
+        font-size: 1rem;
+        color: $dark;
+        text-transform: capitalize;
+        margin-right: 0.4rem;
+
+        &:hover {
+          color: $primary-color;
+          text-decoration: underline;
+        }
+      }
+
+      span {
+        display: block;
+        font-size: 0.9rem;
+        color: gray;
+      }
+    }
+  }
+
+  .comment-text {
+    color: gray;
+    font-size: 1rem;
+    word-break: break-all;
+  }
+}

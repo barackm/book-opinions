@@ -5,17 +5,35 @@
 @import "variables";
 @import "colors";
 
+.cover-image-wrapper {
+  width: 100%;
+  height: 15rem;
+  background-color: $light-blue;
+
+  @include flex-center(column);
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .signup-page-main-container {
   width: 100%;
   height: 100vh;
   overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
   background-color: $light-blue-color;
 
   @include flex-center(column);
 
   .signup-wrapper {
     width: 50rem;
-    height: 30rem;
+    height: 32rem;
     background-color: $white;
     border-radius: 0.4rem;
     box-shadow: $box-shadow;
@@ -26,22 +44,14 @@
     .signup-left-side {
       width: 60%;
       height: 100%;
-      background-image: url("blog8.jpg");
+      background-image: url("https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDl8fG9iamVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
 
       &.register {
-        background-image: url("blog1.jpg");
-      }
-
-      .overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
+        background-image: url("https://images.unsplash.com/photo-1503602642458-232111445657?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8b2JqZWN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
       }
     }
 
@@ -99,6 +109,7 @@
             border: none;
             outline: none;
             height: 100%;
+            background-color: transparent;
           }
         }
 
@@ -152,6 +163,249 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+// user profile style
+
+.right-sidebar-main-container {
+  padding: 1rem 0;
+  padding-top: 0;
+}
+
+.profile-header {
+  padding-top: 2rem;
+  border-bottom: $border;
+  width: 100%;
+
+  .user-controls {
+    @include flex-center(row);
+
+    .user-images-wrapper {
+      margin: 0 1rem;
+
+      .image {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .user-img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .user-details-icon {
+      @include flex-center(row);
+
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      border: $border;
+      border-color: $primary-color;
+
+      .icon {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .user-name-details {
+    margin-top: 1rem;
+
+    @include flex-center(column);
+
+    margin-bottom: 1rem;
+
+    .names {
+      margin: 0;
+      text-transform: uppercase;
+      color: $dark;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .joined {
+      color: $gray;
+    }
+  }
+}
+
+.profile-stats {
+  width: 100%;
+  border-bottom: $border;
+
+  ul {
+    @include flex-center(row);
+
+    li {
+      padding: 0.8rem 0;
+      flex: 1;
+
+      &:not(:last-child) {
+        border-right: $border;
+      }
+
+      @include flex-center(column);
+
+      .number {
+        margin: 0;
+        margin-bottom: 0.3rem;
+      }
+
+      .stat {
+        color: $gray;
+        font-weight: 300;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.followed-by-area {
+  border-bottom: $border;
+  width: 100%;
+  margin-bottom: 0.8rem;
+
+  .followed-by-text {
+    @include flex-center(row);
+
+    justify-content: flex-start;
+    padding: 1rem 0;
+  }
+
+  h4 {
+    margin: 0;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+    color: $gray;
+    font-weight: 400;
+  }
+}
+
+.people-to-follow-wrapper {
+  .follower-item-container {
+    .follower-details-wrapper {
+      margin-left: 1rem;
+    }
+
+    .following-btns-wrapper {
+      margin-right: 1rem;
+    }
+  }
+}
+
+// edit prodile styles
+
+.opinion-content-area.edit-profile {
+  @include flex-center(column);
+
+  justify-content: flex-start;
+  padding: 0 1rem;
+
+  .edit-user-header {
+    h1 {
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 1.4rem;
+    }
+  }
+
+  .edit-profile-form-wrapper {
+    width: 70%;
+
+    form {
+      width: 100%;
+      text-align: left;
+
+      @include flex-center(column);
+
+      align-items: flex-start;
+
+      label {
+        display: block;
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .submit-btn-edit {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+
+    .submit {
+      background: $primary-color;
+      color: $white;
+      border: none;
+      padding: 0.6rem 3rem;
+      font-size: 1rem;
+      border-radius: 0.2rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten($primary-color, 5%);
+      }
+    }
+  }
+
+  .form-control-edit {
+    width: 100%;
+    margin: 0.5rem 0.5rem;
+    border: $border;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border-color: rgb(201, 204, 206);
+
+    @include flex-center(row);
+
+    .icon {
+      font-size: 1.2rem;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .edit-form {
+      flex: 1;
+      border: none;
+      outline: none;
+      height: 100%;
+      background-color: transparent;
+    }
+
+    input[type="file"] {
+      flex: 1;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      height: 100%;
+    }
+  }
+
+  .delete-account-wrapper {
+    @include flex-center(row);
+
+    width: 70%;
+    justify-content: flex-start;
+    margin-top: 1rem;
+
+    .submit-btn-delete {
+      background: $danger;
+      margin-left: 0.5rem;
+      color: $white;
+      border: none;
+      padding: 0.6rem 3rem;
+      font-size: 1rem;
+      border-radius: 0.2rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten($danger, 5%);
       }
     }
   }

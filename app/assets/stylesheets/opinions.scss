@@ -1,0 +1,458 @@
+// Place all the styles related to the opinions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "mixins/display";
+@import "colors";
+@import "variables";
+
+.main-opinion-wrapper {
+  @include flex-center(row);
+
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+  background-color: $light-gray;
+
+  .opinion-content-area {
+    width: 70%;
+    padding-bottom: 4rem;
+
+    @include flex-center(column);
+
+    justify-content: flex-start;
+    border-right: $border;
+    height: 100%;
+
+    .header {
+      width: 100%;
+
+      @include flex-center(row);
+
+      justify-content: flex-start;
+      margin-bottom: 1rem;
+      border-bottom: $border;
+
+      a {
+        border-bottom: 0.2rem solid $primary-color;
+        text-align: center;
+        display: inline-block;
+        padding: 0 2rem;
+        height: 3rem;
+        color: $dark;
+
+        @include flex-center(row);
+
+        text-transform: uppercase;
+      }
+    }
+
+    form {
+      width: 100%;
+
+      @include flex-center(column);
+
+      .post-input-wrapper {
+        @include flex-center(column);
+
+        align-items: flex-start;
+        width: 90%;
+        background-color: $white;
+        border-radius: 0.4rem;
+        padding: 1rem;
+        border: $border;
+        margin-top: 0.5rem;
+
+        .title {
+          text-transform: uppercase;
+          color: gray;
+          margin-bottom: 1rem;
+        }
+
+        .form-control {
+          flex: 1;
+          width: 100%;
+
+          @include flex-center(row);
+
+          input[type="text"] {
+            background-color: transparent;
+            padding: 0.6rem 0.7rem;
+            flex: 1;
+            border: $border;
+            outline: none;
+            font-size: 1rem;
+            border-radius: 0.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .opinion-right-sidebar {
+    width: 30%;
+    position: sticky;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+  }
+}
+
+.opinions-items-wrapper {
+  width: 90%;
+  border-radius: 0.4rem;
+  background-color: $white;
+  padding: 1rem;
+  padding-top: 0;
+  border: $border;
+  margin-top: 1.5rem;
+
+  .opinions {
+    width: 100%;
+  }
+
+  @include flex-center(column);
+
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .items-header {
+    margin: 0;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-bottom: $border;
+    width: 100%;
+
+    @include flex-center(row);
+
+    justify-content: flex-start;
+    color: gray;
+    text-transform: uppercase;
+  }
+}
+
+.opinion-main-item-container {
+  @include flex-center(column);
+
+  border-bottom: $border;
+  margin-bottom: 1rem;
+
+  .opinion-item-wrapper {
+    width: 100%;
+
+    @include flex-center(row);
+
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+
+    .user-image {
+      width: 3rem;
+      margin-right: 1rem;
+
+      .image {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.2rem;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .opinion-details {
+      @include flex-center(column);
+
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .user-name {
+        width: 100%;
+
+        @include flex-space-between(row);
+
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+
+        h3 {
+          color: lighten($dark, 20%);
+          margin: 0;
+          margin-right: 0.5rem;
+          font-size: 1rem;
+          text-transform: capitalize;
+          font-weight: bold;
+
+          &:hover {
+            text-decoration: underline;
+            color: $primary-color;
+          }
+        }
+
+        span {
+          display: block;
+          margin: 0;
+          font-size: 0.9rem;
+          color: $dark-gray;
+          // margin-top: 0.2rem;
+        }
+      }
+
+      .opinion-content {
+        word-break: break-all;
+        color: $dark-gray;
+      }
+    }
+  }
+}
+
+.right-sidebar-main-container {
+  @include flex-center(column);
+
+  padding: 1rem;
+  padding-top: 0;
+
+  .right-sidebar-header {
+    width: 100%;
+
+    @include flex-space-between(row);
+
+    margin-bottom: 1rem;
+    border-bottom: $border;
+
+    .text {
+      height: 1.2rem;
+      color: $gray;
+      font-size: 16px;
+      font-weight: 400;
+      margin-left: 1rem;
+
+      @include flex-center(row);
+
+      text-transform: uppercase;
+    }
+
+    .icon {
+      margin-right: 1rem;
+
+      svg {
+        width: 0.8rem;
+
+        path {
+          fill: $gray;
+          stroke: $gray;
+        }
+      }
+    }
+  }
+}
+
+.people-to-follow-wrapper {
+  width: 100%;
+}
+
+.following-btn {
+  @include flex-center(row);
+
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: $border;
+  border-color: $primary-color;
+
+  i {
+    font-size: 1.4rem;
+    color: $primary-color;
+  }
+
+  &:hover {
+    background-color: $primary-color;
+
+    i {
+      color: $white;
+    }
+  }
+
+  &.unfollow {
+    background-color: $danger;
+    border: none;
+
+    i {
+      color: $white;
+    }
+
+    &:hover {
+      background-color: lighten($danger, 7%);
+    }
+  }
+}
+
+.follower-item-container {
+  @include flex-space-between(row);
+
+  width: 100%;
+  margin-bottom: 0.8rem;
+
+  .follower-details-wrapper {
+    @include flex-center(row);
+
+    justify-content: flex-start;
+  }
+
+  .user-image-follower {
+    width: 4rem;
+
+    .image-follower {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      overflow: hidden;
+
+      .img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .follower-details {
+    .name {
+      margin: 0;
+      font-size: 1rem;
+      color: darken($gray, 30%);
+      font-weight: 400;
+      text-transform: capitalize;
+    }
+
+    .joined {
+      font-size: 0.9rem;
+      color: $gray;
+    }
+
+    &:hover {
+      .name {
+        text-decoration: underline;
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+.opinion-details-stats {
+  width: 100%;
+  border-top: $border;
+  border-bottom: $border;
+  padding: 0.5rem 0;
+
+  @include flex-space-between(row);
+
+  .likes-count-details {
+    @include flex-center(row);
+
+    .count {
+      margin-right: 0.6rem;
+    }
+  }
+
+  .comments-count-details {
+    @include flex-center(row);
+
+    .count {
+      color: $gray;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      color: $gray;
+      margin-left: 0.4rem;
+      font-weight: 400;
+    }
+  }
+
+  .voting-btn {
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.2rem;
+    background-color: $primary-color;
+    color: $white;
+    font-size: 0.9rem;
+
+    @include flex-center(row);
+
+    .count-badge {
+      padding: 0.1rem 0.2rem;
+      border-radius: 0.1rem;
+      background-color: $white;
+      color: $primary-color;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-right: 0.3rem;
+    }
+
+    &:hover {
+      background-color: lighten($primary-color, 5%);
+    }
+
+    &.downvote {
+      background-color: $warning;
+
+      .count-badge {
+        color: $warning;
+      }
+
+      &:hover {
+        background-color: lighten($warning, 5%);
+      }
+    }
+  }
+}
+
+.opinion-comments-area {
+  width: 100%;
+  padding-top: 0.8rem;
+
+  @include flex-center(column);
+
+  align-items: flex-start;
+
+  .comments-are {
+    width: 100%;
+  }
+
+  .comment-input-wrapper {
+    padding-left: 4rem;
+
+    .title-comment {
+      text-transform: uppercase;
+      color: $gray;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      .form-control-comment {
+        border: $border;
+        width: 100%;
+
+        @include flex-center(row);
+
+        .input {
+          background-color: transparent;
+          padding: 0.6rem 0.7rem;
+          width: 95%;
+          outline: none;
+          border: none;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.opinion-comments-list {
+  margin-left: 4rem;
+  padding-top: 1rem;
+}

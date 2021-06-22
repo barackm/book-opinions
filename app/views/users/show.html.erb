@@ -1,0 +1,41 @@
+<div class="main-opinion-wrapper">
+    <div class="opinion-content-area">
+        <div class="cover-image-wrapper">
+            <%= image_tag(@user.cover_image)%>
+        </div>
+        <div class="header">
+            <%= link_to "Opinions" ,root_path %>
+        </div>
+        <% if @user.id == current_user.id %>
+        <%= form_with model: @opinion do |f| %>
+        <div class="post-input-wrapper">
+            <div class="title">
+                Add review
+            </div>
+            <div class="form-control">
+                <%= f.text_field :text, placeholder:"Compose new review"  %>
+            </div>
+            <div class="input-error-messages-wrapper edit-profile">
+                <%if @opinion.errors[:text][0]%>
+                <div class="input-error-message">Review content <%= @opinion.errors[:text][0] %></div>
+                <%end %>
+            </div>
+        </div>
+        <%end%>
+        <%end%>
+
+        <div class="opinions-items-wrapper">
+            <div class="items-header">
+                <%= @user.opinions.count %> new Reviews
+            </div>
+            <div class="opinions">
+                <% @user.opinions.order_by_most_recent.each do |opinion| %>
+                <%= render "opinions/opinion", opinion: opinion, comment: @comment %>
+                <%end %>
+            </div>
+        </div>
+    </div>
+    <div class="opinion-right-sidebar">
+        <%= render "right_sidebar", user: @user%>
+    </div>
+</div>

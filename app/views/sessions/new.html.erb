@@ -13,11 +13,16 @@
                     <h3>Login to your account</h1>
                 </div>
             </div>
-            <%= form_for(:session, url: sessions_path) do |f| %>
+            <%= form_with model: @user, url: sessions_path do |f| %>
             <div class="form-control">
                 <i class="bi bi-person"></i>
                 <%= f.text_field :username, placeholder: "Username", autofocus: true %>
             </div>
+            <%if @user.errors[:username][0]%>
+            <div class="input-error-messages-wrapper">
+                <div class="input-error-message">Username <%= @user.errors[:username][0] %></div>
+            </div>
+            <%end %>
             <div class="submit-btn">
                 <%= f.submit "Login" %>
             </div>
