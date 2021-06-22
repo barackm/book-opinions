@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     flash[:notice] = 'Account canceled successfully.✨'
-    redirect_to root_path
+    redirect_to new_session_path
   end
 
   private
