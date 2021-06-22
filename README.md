@@ -53,7 +53,7 @@ Clone repository from github to your local drive by following these steps:
 - Remember: Yarn packages need to be installed by running the command <code>yarn install</code> for local setup. Otherwise, the app generates an error.
 - Install all the available gems with the command `bundle install`
 - Create a database by typing in the terminal <code>rails db:create</code> and then <code>rails db:migrate</code> to define changes to your database schema
-- For webpacker we need to run the command `ails webpacker:install`
+- For webpacker we need to run the command `rails webpacker:install`
 - Open your terminal and type <code>rails s</code>. After that join to localhost at `http://localhost:3000/`
 - Feel free to sign up or sign in and start posting!
 
