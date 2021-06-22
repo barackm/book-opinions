@@ -39,9 +39,9 @@ Clone repository from github to your local drive by following these steps:
 - Go to the main page of the repository
 - Above the listed files, click the green Code button
 - You can clone the repository using:
-  - GitHub CLI: gh repo `git clone github.com/barackm/book-opinions `.
-  - SSH:`git clone git@github.com:barackm/book-opinions.git`.
-  - HTTPS:`git clone https://github.com/barackm/book-opinions `.
+  - GitHub CLI: gh repo `$ git clone github.com/barackm/book-opinions `.
+  - SSH:`$ git clone git@github.com:barackm/book-opinions.git`.
+  - HTTPS:`$ git clone https://github.com/barackm/book-opinions `.
 - Open Terminal
 - Change the current working directory to the location you want the cloned directory
 - Type one of the git clone commands listed above.
@@ -57,6 +57,12 @@ Clone repository from github to your local drive by following these steps:
 - Install Git.
 - Install ruby
 - Install ruby on rails
+
+### Tests
+
+- This project includes unit tests and integration tests, to run the tests you will just need to run the following command in the terminal from the root of the project
+  `$ rails db:migrate RAILS_ENV=test`
+  `$ rspec --format documentation`
 
 ## Author
 
