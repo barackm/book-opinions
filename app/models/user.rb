@@ -21,17 +21,15 @@ class User < ApplicationRecord
   has_many :votes
   has_many :followings, class_name: 'Following', foreign_key: 'follower_id'
   has_many :following_users, through: :followings, source: :followed
-
-  def followers
-    User.joins(:followings).where(followings: { followed_id: id })
-  end
+  has_many :inverse_followings, class_name: 'Following', foreign_key: 'followed_id'
+  has_many :followers, through: :inverse_followings, source: :follower
 
   def people_to_follow
     User.where.not(id: Array.wrap(following_users)).and(User.where.not(id: id)).order('created_at DESC')
   end
 
   def timeline_opinions
-    Opinion.where(author: (following_users.to_a << self)).order('created_at DESC')
+    Opinion.where(author: (following_users.to_a << self)).order_by_most_recent
   end
 
   def following?(follower)

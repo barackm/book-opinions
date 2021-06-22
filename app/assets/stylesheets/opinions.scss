@@ -134,6 +134,8 @@
   margin-bottom: 1rem;
 
   .opinion-item-wrapper {
+    width: 100%;
+
     @include flex-center(row);
 
     align-items: flex-start;

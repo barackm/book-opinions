@@ -90,6 +90,14 @@ header {
   a {
     margin-left: 2rem;
 
+    @include flex-center(row);
+
+    .title {
+      text-transform: uppercase;
+      color: $white;
+      font-weight: 400;
+    }
+
     .application-header-logo {
       width: 2rem;
       height: 2rem;

@@ -44,7 +44,7 @@
                 <%end%>
             </div>
             <div class="opinion-comments-list">
-                <% opinion.comments.each do |comment| %>
+                <% opinion.comments.order_by_most_recent.each do |comment| %>
                 <%= render "comments/comment", comment: comment %>
                 <%end %>
             </div>
