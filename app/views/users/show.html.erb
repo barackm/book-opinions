@@ -29,7 +29,7 @@
                 <%= @user.opinions.count %> new Reviews
             </div>
             <div class="opinions">
-                <% @user.opinions.each do |opinion| %>
+                <% @user.opinions.order_by_most_recent.each do |opinion| %>
                 <%= render "opinions/opinion", opinion: opinion, comment: @comment %>
                 <%end %>
             </div>
