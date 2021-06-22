@@ -8,6 +8,7 @@
 .cover-image-wrapper {
   width: 100%;
   height: 15rem;
+  background-color: $light-blue;
 
   @include flex-center(column);
 
