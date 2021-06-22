@@ -3,5 +3,5 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :opinion
 
-  scope :order_by_most_recent, -> { includes(:user).order(created_at: :desc) }
+  scope :order_by_most_recent, -> { order(created_at: :desc) }
 end
