@@ -14,6 +14,10 @@
 
 ![](./img4.png)
 
+## Live demo
+
+You can visit the deployed version of the app via [this link](https://b-book-reviewer.herokuapp.com/sessions/new)
+
 ## Built With
 
 - Ruby on rails
